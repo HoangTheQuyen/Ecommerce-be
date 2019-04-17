@@ -1,27 +1,27 @@
 const mongoose = require('mongoose')
 
-const ShopSchema = new mongoose.Schema({
-    name: {
+const SupplierSchema = new mongoose.Schema({
+    name:{
         type: String,
         trim: true,
         required: 'Name is required'
     },
-    image: {
-        type: String, 
-        required: 'Image is required'
+    image:{
+        type: String,
+        require:'Image is required'
     },
-    description: {
+    description:{
         type: String,
         trim: true
     },
+    categories:[{
+        type: mongoose.Schema.ObjectId,
+        ref:'Category'
+    }],
     updated: Date,
     created: {
         type: Date,
         default: Date.now
-    },
-    owner: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'User'
     },
     products: [{
         type: mongoose.Schema.ObjectId,
@@ -33,5 +33,4 @@ const ShopSchema = new mongoose.Schema({
     }
 })
 
-
-module.exports = mongoose.model('Shop', ShopSchema)
+module.exports = mongoose.model('Supplier',SupplierSchema)
