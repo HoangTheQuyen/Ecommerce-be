@@ -4,10 +4,11 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 // Internal Dependencies
-const DefaultRoutes = require("./config/defaultRoutes");
 const MongoConfig = require("./config/mongoConfig");
 const _DefaultRoutes = require("./config/defaultRoutes");
 const _Routes = require("./routes/index");
+const router = require('express').Router()
+
 
 // Main app
 const app = express();
@@ -29,6 +30,13 @@ db.on("error", console.error.bind(console, "connection: error!"));
 db.once("open", () => {
   console.log("[MongoDB] Connected!");
 });
+
+app.use(express.static(__dirname + '/public'));
+
+app.get('/*', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
+
 
 // Start server
 const server = app.listen(3000, () => {
