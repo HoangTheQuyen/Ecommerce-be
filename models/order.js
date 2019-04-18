@@ -1,4 +1,4 @@
-const CartItemSchema  = require('./cardItem')
+const CartItemSchema = require('./cardItem')
 const mongoose = require('mongoose')
 
 const OrderSchema = new mongoose.Schema({
@@ -22,13 +22,18 @@ const OrderSchema = new mongoose.Schema({
         country: { type: String, required: 'Country is required' }
     },
     payment_id: {},
+    status: {
+        type: String,
+        default: 'Not processed',
+        enum: ['Not processed', 'Processing', 'Shipped', 'Delivered', 'Cancelled']
+    },
     updated: Date,
     created: {
         type: Date,
         default: Date.now
     },
     user: { type: mongoose.Schema.ObjectId, ref: 'User' },
-    isdelete:{
+    isdelete: {
         type: Boolean,
         default: false
     }
