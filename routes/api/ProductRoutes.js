@@ -4,6 +4,7 @@ const _DefaultRoutes = require('../../config/defaultRoutes')
 
 const router = express.Router()
 
-router.get(_DefaultRoutes.PRODUCT.GET_ALL, _Product.getAll)
+router.post(_DefaultRoutes.PRODUCT.GET_ALL, _Product.getAll)
+router.post(_DefaultRoutes.PRODUCT.CREATE, _Product.createOne)
 
 module.exports = router
