@@ -26,7 +26,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: "Password is required"
     },
-    representPassword: String,
+    salt: String,
     created: {
         type: Date,
         default: Date.now
@@ -41,7 +41,7 @@ const UserSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: 'Shop'
     }],
-    isdelete:{
+    isDelete:{
         type: Boolean,
         default: false
     }

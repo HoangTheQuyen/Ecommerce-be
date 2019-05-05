@@ -4,14 +4,10 @@ const ProductSchema = new mongoose.Schema({
   name: {
     type: String,
     trim: true,
+    unique: 'product already exists',
     required: "Product name is required"
   },
-  image: [
-    {
-      type: String,
-      require: "Product image is required"
-    }
-  ],
+  images: [String],
   description: {
     type: String,
     trim: true
@@ -59,7 +55,7 @@ const ProductSchema = new mongoose.Schema({
     required: "shopId is required",
     ref: "Shop"
   },
-  isdelete: {
+  isDelete: {
     type: Boolean,
     default: false
   },

@@ -11,7 +11,7 @@ const CardItemSchema = new mongoose.Schema({
         default: Date.now
     },
     updated: Date,
-    isdelete:{
+    isDelete:{
         type: Boolean,
         default: false
     }

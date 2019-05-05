@@ -4,6 +4,7 @@ const ShopSchema = new mongoose.Schema({
     name: {
         type: String,
         trim: true,
+        unique: 'Shop name already exists',
         required: 'Name is required'
     },
     image: {
@@ -27,11 +28,10 @@ const ShopSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref:'Product'
     }],
-    isdelete:{
+    isDelete:{
         type: Boolean,
         default: false
     }
 })
-
 
 module.exports = mongoose.model('Shop', ShopSchema)

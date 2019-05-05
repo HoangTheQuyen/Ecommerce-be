@@ -4,6 +4,7 @@ const SupplierSchema = new mongoose.Schema({
     name:{
         type: String,
         trim: true,
+        unique: 'Supplier already exists',
         required: 'Name is required'
     },
     image:{
@@ -18,16 +19,16 @@ const SupplierSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref:'Category'
     }],
+    products: [{
+        type: mongoose.Schema.ObjectId,
+        ref:'Product'
+    }],
     updated: Date,
     created: {
         type: Date,
         default: Date.now
     },
-    products: [{
-        type: mongoose.Schema.ObjectId,
-        ref:'Product'
-    }],
-    isdelete:{
+    isDelete:{
         type: Boolean,
         default: false
     }
