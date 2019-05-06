@@ -3,8 +3,18 @@ const router = express.Router()
 const _DefaultRoutes = require('../config/defaultRoutes')
 const _ProductAPI  = require('../routes/api/ProductRoutes')
 const _AuthenticationAPI = require('../routes/api/AuthenticationRoutes')
+const _shop = require('../routes/api/ShopRouter')
+const _Category = require('../routes/api/CategoryRoutes')
+const _supplier = require('./api/SupplierRoutes')
+const _Order = require('../routes/api/OrderRoutes')
+const _CardItem = require('../routes/api/CardItemsRoutes')
 
+router.use(_DefaultRoutes.SHOP.ROOT,_shop)
 router.use(_DefaultRoutes.PRODUCT.ROOT, _ProductAPI)
 router.use(_DefaultRoutes.AUTHENTICATION.ROOT, _AuthenticationAPI)
+router.use(_DefaultRoutes.CATEGORY.ROOT,_Category)
+router.use(_DefaultRoutes.SUPPLIER.ROOT,_supplier)
+router.use(_DefaultRoutes.ORDER.ROOT,_Order)
+router.use(_DefaultRoutes.CARDITEM.ROOT,_CardItem)
 
 module.exports = router;

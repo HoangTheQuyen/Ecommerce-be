@@ -2,7 +2,10 @@ const CartItemSchema = require('./cardItem')
 const mongoose = require('mongoose')
 
 const OrderSchema = new mongoose.Schema({
-    products: [CartItemSchema],
+    items: [{
+        type: mongoose.Schema.ObjectId,
+        ref:'CartItem'
+    }],
     customer_name: {
         type: String,
         trim: true,
